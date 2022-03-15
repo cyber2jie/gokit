@@ -6,6 +6,7 @@ import (
 	"gokit/pkg/image"
 	"gokit/pkg/net"
 	"gokit/pkg/os"
+	"gokit/pkg/text"
 	"strings"
 )
 
@@ -18,12 +19,14 @@ const (
 	kitOS    = "os"
 	kitImage = "image"
 	kitNet   = "net"
+	kitText  = "text"
 )
 
 var kits = map[string]Kit{
 	kitOS:    &os.Os{},
 	kitImage: &image.Image{},
 	kitNet:   &net.Net{},
+	kitText:  &text.Text{},
 }
 
 func GoKit() {
@@ -48,6 +51,7 @@ func printUsage(kitKey string) {
 	printKit(kitOS, &kitsBuilder)
 	printKit(kitImage, &kitsBuilder)
 	printKit(kitNet, &kitsBuilder)
+	printKit(kitText, &kitsBuilder)
 
 	fmt.Println(kitsBuilder.String())
 }

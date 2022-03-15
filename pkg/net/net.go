@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gokit/pkg/i18n"
 	"gokit/pkg/net/http"
+	"gokit/pkg/net/server"
 	"os"
 )
 
@@ -11,12 +12,17 @@ var (
 	I18nKey_Description = i18n.I18nKey{Key: "net_description", Common: "网络相关工具"}
 	description         = i18n.GetLocaleVal(I18nKey_Description)
 	commander           = map[string]func(args []string){
-		"httpClient": httpClient,
+		"httpClient":   httpClient,
+		"simpleServer": simpleServer,
 	}
 )
 
 func httpClient(args []string) {
 	http.Run(args)
+}
+
+func simpleServer(args []string) {
+	server.StartServer(args)
 }
 
 func commanders() []string {
