@@ -1,5 +1,10 @@
 package common
 
+import (
+	"bytes"
+	"strings"
+)
+
 func VisitOne(args []string) (string, []string) {
 	if len(args) > 0 {
 		return args[0], args[1:]
@@ -23,4 +28,15 @@ func StartWith(str string, startWith string) bool {
 		}
 	}
 	return len(str) == len(startWith)
+}
+func Reverse(str string) string {
+	runes := bytes.Runes([]byte(str))
+	builder := strings.Builder{}
+	for index := len(runes); index > 0; index-- {
+		builder.WriteRune(runes[index-1])
+	}
+	return builder.String()
+}
+func EndWith(str string, endWith string) bool {
+	return StartWith(Reverse(str), Reverse(endWith))
 }

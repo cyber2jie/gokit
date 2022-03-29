@@ -3,6 +3,7 @@ package gokit
 import (
 	"flag"
 	"fmt"
+	"gokit/pkg/file"
 	"gokit/pkg/image"
 	"gokit/pkg/net"
 	"gokit/pkg/os"
@@ -20,6 +21,7 @@ const (
 	kitImage = "image"
 	kitNet   = "net"
 	kitText  = "text"
+	kitFile  = "file"
 )
 
 var kits = map[string]Kit{
@@ -27,6 +29,7 @@ var kits = map[string]Kit{
 	kitImage: &image.Image{},
 	kitNet:   &net.Net{},
 	kitText:  &text.Text{},
+	kitFile:  &file.File{},
 }
 
 func GoKit() {
@@ -52,6 +55,7 @@ func printUsage(kitKey string) {
 	printKit(kitImage, &kitsBuilder)
 	printKit(kitNet, &kitsBuilder)
 	printKit(kitText, &kitsBuilder)
+	printKit(kitFile, &kitsBuilder)
 
 	fmt.Println(kitsBuilder.String())
 }

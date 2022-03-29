@@ -35,7 +35,6 @@ func (text *Text) Run(args []string) {
 func printUsage() {
 	fmt.Println("文本工具，可进行统计转化等操作")
 	fmt.Println("使用方式 操作[count,conv] 参数")
-
 }
 func count(args []string) {
 	count2.Run(args)
